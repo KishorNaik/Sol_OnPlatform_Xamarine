@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:VM="clr-namespace:Sol_Demo"
+             mc:Ignorable="d"
+             x:Class="Sol_Demo.MainPage"
+             x:Name="mainPageObj"
+             >
+
+    <ContentPage.BindingContext>
+        <VM:MainPageViewModel x:Name="mainPageViewModel"></VM:MainPageViewModel>
+    </ContentPage.BindingContext>
+    
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Button 
+            x:Name="btnSubmit" 
+            Text="Submit">
+            <Button.BackgroundColor>
+                <OnPlatform x:TypeArguments="Color">
+                    <OnPlatform.Platforms>
+                        <On Platform="Android" Value="Red"></On>
+                        <On Platform="iOS" Value="Green"></On>
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Button.BackgroundColor>
+        </Button>
+
+        <Button 
+            x:Name="btnSubmit1" 
+            Text="Submit"
+            Command="{Binding OnSubmit}"
+            CommandParameter="{Binding Source={x:Reference mainPageObj}}"
+            >
+            
+        </Button>
+    </StackLayout>
+
+</ContentPage>
